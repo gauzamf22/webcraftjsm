@@ -6,6 +6,7 @@
 
 
 ## Operasi CRUD pada tabel Users
+### Operasi GET
 ```markdown
 GET /api/users          # Menampilkan seluruh user
 GET /api/users/{id}     # Menampilkan user berdasarkan id
@@ -40,4 +41,46 @@ GET /api/users
     "role": "admin"
   }
 ]
+```
+
+### Operasi POST
+```markdown
+POST /api/users
+```
+#### Contoh penggunaan
+**Request**
+```markdown
+POST /api/users
+
+{
+  "name": "Rafa"
+  "email": "Rafa@email.com"
+  "role": "customer
+}
+```
+**Response**
+```
+{
+  "id": 1
+  "name": "Rafa"
+  "email": "Rafa@email.com"
+  "role": "customer
+}
+```
+
+### Operasi PUT
+```
+PUT /api/users/{id} 
+```
+
+### Operasi DELETE
+```
+DELETE /users/{id}
+```
+
+## Operasi CRUD pada tabel Kantin
+```markdown
+GET /api/kantin
+GET /api/kantin/{id}
+GET
 ```
