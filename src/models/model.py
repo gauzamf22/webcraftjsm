@@ -10,7 +10,7 @@ class User(base):
     id = Column(Integer, primary_key=True, index = True)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
-    oauth_provider = Column(String)  # authentication, gtw gmn wkw ntar lah
+    oauth_provider = Column(String, default="google")  # authentication, pake google dulu, lainnya ntar
     oauth_id = Column(String) # sama
     role = Column(String, nullable=False, default="customer")
 

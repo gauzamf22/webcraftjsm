@@ -6,7 +6,7 @@
 
 
 ## Operasi CRUD pada tabel Users
-### Operasi GET
+### Operator GET
 ```markdown
 GET /api/users          # Menampilkan seluruh user
 GET /api/users/{id}     # Menampilkan user berdasarkan id
@@ -43,7 +43,7 @@ GET /api/users
 ]
 ```
 
-### Operasi POST
+### Operator POST
 ```markdown
 POST /api/users
 ```
@@ -68,19 +68,59 @@ POST /api/users
 }
 ```
 
-### Operasi PUT
+### Operator PUT
 ```
 PUT /api/users/{id} 
 ```
 
-### Operasi DELETE
+### Operator DELETE
 ```
 DELETE /users/{id}
 ```
 
 ## Operasi CRUD pada tabel Kantin
+"kantin" maksutnya tenantnya, sedangkan "lokasi" maksutnya kantinnya, jadi:
+- "ayam geprek fisipol" berarti kantin = ayam geprek pak rafa; dan lokasi = fisipoint F. Ilmu Sosial dan Ilmu Politik
+- "nasi rames bonbin" berarti kantin = nasi rames pak rafa; dan lokasi = bonbin F. Filsafat 
+### Operator GET
 ```markdown
-GET /api/kantin
-GET /api/kantin/{id}
-GET
+GET /api/kantin       # Menampilkan semua kantin(tenant) di satu lokasi(kantin) 
+GET /api/kantin/{id}  # Tampilin kantin berdasarkan id kantin
+GET /api/kantin/      # Tampilkan kantin berasarkan query nama atau lokasi
 ```
+#### Contoh Penggunaan
+**Request**
+```
+GET /api/kantin/1
+```
+**Response**
+```markdown
+[
+  {
+    "id": 1,
+    "name": "mi ayam siliwangi",
+    "description": "-" ,
+    "location": "biogeo",
+    "owner_id": 28,
+    "menu_item":[
+      {
+        "id": 1
+        "kantin_id":1
+        "name": "mi ayam kuah"
+        "price": 16000
+        "image_url": "-"
+        "stock": "-"
+      },
+      {
+        "id": 2,
+        "kantin_id": 1,
+        "name": "mi ayam tanpa ayam",
+        "price": 3 elixir,
+        "image_url": "-",
+        "stock": "-"
+      }
+    ]
+
+  }
+]
+````
