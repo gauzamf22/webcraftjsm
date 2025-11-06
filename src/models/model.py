@@ -12,6 +12,7 @@ class User(base):
     email = Column(String, unique=True, nullable=False)
     oauth_provider = Column(String, default="google")  # authentication, pake google dulu, lainnya ntar
     oauth_id = Column(String) # sama
+    password_hash = Column(String) # hashed pw di db, biar gampang, oauth ribet jir
     role = Column(String, nullable=False, default="customer")
 
     kantins = relationship("Kantin", back_populates="owner")

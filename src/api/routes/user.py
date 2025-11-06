@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from schemas.users import UserCreate, UserResponse, UserUpdate
 from database.db import get_db
 from models.model import User
+from api.routes.authentication import get_password_hash, get_current_active_user
 
 router = APIRouter()
 
@@ -12,13 +13,20 @@ router = APIRouter()
 
 # Nampilin semua user (isi tabel Users) (GET) 
 @router.get("/users", response_model=list[UserResponse])
-def get_all_users(db: Session = Depends(get_db)):
+def get_all_users(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
     users = db.query(User).all()
     return users
 
 # Cari user berdasarkan id (GET)
 @router.get("/users/{user_id}", response_model=UserResponse)
-def get_user(user_id: int, db: Session = Depends(get_db)):
+def get_user(
+    user_id: int, 
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
     user = db.query(User).filter(User.id == user_id).first()
     
     if not user:
@@ -28,7 +36,12 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
 # Cari user berdasarkan query paramter (nama atau email) (GET)
 @router.get("/users/", response_model=UserResponse)
-def get_user_by_query(name: str = None, email: str = None, db: Session = Depends(get_db)):
+def get_user_by_query(
+    name: str = None, 
+    email: str = None, 
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
     if name:
         user = db.query(User).filter(User.name == name).first()
     elif email:
@@ -40,21 +53,23 @@ def get_user_by_query(name: str = None, email: str = None, db: Session = Depends
         raise HTTPException(status_code=404, detail="User nggak ada")
     return user
 
-
 # === POST ===
 
 # Nambah user 
 @router.post("/users", response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-
     existing_user = db.query(User).filter(User.email == user.email).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="Email sudah ada!")
     
+    # Hash the password before storing
+    hashed_password = get_password_hash(user.password)
+    
     new_user = User(
         name=user.name,
         email=user.email,
-        role=user.role
+        role=user.role,
+        hashed_password=hashed_password
     )
     
     db.add(new_user)
@@ -63,14 +78,14 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     
     return new_user
 
-
 # === PUT ===
 # Update user
 @router.put("/users/{user_id}", response_model=UserResponse)
 def update_user(
     user_id: int, 
     user_update: UserUpdate, 
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     user = db.query(User).filter(User.id == user_id).first()
     
@@ -81,17 +96,24 @@ def update_user(
     user.email = user_update.email
     user.role = user_update.role
     
+    # If password is being updated, hash it
+    if user_update.password:
+        user.hashed_password = get_password_hash(user_update.password)
+    
     db.commit()
     db.refresh(user)
     
     return user
 
-
 # === DELETE ===
 
 # Hapus user berdasarkan id 
 @router.delete("/users/{user_id}")
-def delete_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(
+    user_id: int, 
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
     user = db.query(User).filter(User.id == user_id).first()
     
     if not user:

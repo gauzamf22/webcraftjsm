@@ -4,6 +4,7 @@
 - saat ini masih users dulu, ntar lainnya
 - belum di up, masih lokal
 
+## AUTH API
 
 ## Operasi CRUD pada tabel Users
 ### Operator GET
