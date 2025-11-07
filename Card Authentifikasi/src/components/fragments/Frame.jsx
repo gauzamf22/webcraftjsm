@@ -3,33 +3,40 @@ import { useNavigate } from "react-router-dom"; // ✅ untuk navigasi halaman
 
 // 🔹 Import semua gambar kantin
 import fotoKantin from "../../assets/Foto Kantin.svg";
+import Biogeo from "../../assets/Kantin Biogeo.svg";
+import Kansas from "../../assets/Kantin Kansas.svg";
+import Pujale from "../../assets/Kantin Pujale.svg";
+import Bonbin from "../../assets/Kantin Bonbin.svg";
+
+
+
 
 // 🔹 Data semua kantin
 const kantinData = [
   {
     id: 1,
-    image: fotoKantin,
+    image: Biogeo,
     title: "Kantin BioGeo",
     description:
       "Kantin favorit mahasiswa FMIPA dengan suasana sejuk dan harga terjangkau. Banyak pilihan makanan berat dan ringan.",
   },
   {
     id: 2,
-    image: fotoKantin,
+    image: Kansas,
     title: "Kansas",
     description:
       "Kantin Sastra yang terkenal dengan makanan kekiniannya dan spot nongkrong yang cozy banget buat anak FIB dan Filsafat.",
   },
   {
     id: 3,
-    image: fotoKantin,
+    image: Pujale,
     title: "Pujale",
     description:
       "Pusat jajanan lengkap di area Teknik. Pujale dikenal dengan aneka nasi goreng, ayam geprek, dan minuman segar.",
   },
   {
     id: 4,
-    image: fotoKantin,
+    image: Bonbin,
     title: "Bonbin",
     description:
       "Kantin di area Biologi yang dikelilingi pepohonan rindang, cocok buat makan sambil istirahat di siang hari.",
