@@ -1,49 +1,29 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import sys
 from pathlib import Path
-
-# Add backend to path
 sys.path.insert(0, str(Path(__file__).parent))
+from src.api.routes import user, kantin, menuitem, order, orderitem, authentication
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(user.router, prefix="/api", tags=["user"])
+app.include_router(kantin.router, prefix="/api", tags=["kantin"])
+app.include_router(menuitem.router, prefix="/api", tags=["menuitem"])
+app.include_router(order.router, prefix="/api", tags=["order"])
+app.include_router(orderitem.router, prefix="/api", tags=["orderitem"])
+app.include_router(authentication.router, prefix="/api", tags=["authentication"])
+
 @app.get("/")
-def root():
-    return {"status": "alive"}
+async def root():
+    return {"message": "vercel anjg, mending big cloud"}
 
-@app.get("/test-imports")
-def test_imports():
-    errors = []
-    
-    # Test each import individually
-    try:
-        from schemas.users import UserCreate 
-        errors.append({"schemas.users": "OK"})
-    except Exception as e:
-        errors.append({"schemas": str(e)})
-    
-    try:
-        from src.schemas.users import UserCreate 
-        errors.append({"src.schemas.users": "OK"})
-    except Exception as e:
-        errors.append({"schemas": str(e)})
-
-    try:
-        from api.routes.authentication import get_user_by_email
-        errors.append({"routes": "OK"})
-    except Exception as e:
-        errors.append({"routes": str(e)})
-    
-    try:
-        from database import db
-        errors.append({"database": "OK"})
-    except Exception as e:
-        errors.append({"database": str(e)})
-    
-    try:
-        from models import model
-        errors.append({"models": "OK"})
-    except Exception as e:
-        errors.append({"models": str(e)})
-    
-    return {"import_tests": errors}
+app = app
