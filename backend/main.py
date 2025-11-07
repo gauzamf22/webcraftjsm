@@ -2,8 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 from pathlib import Path
+import traceback
+
 sys.path.insert(0, str(Path(__file__).parent))
-from src.api.routes import user, kantin, menuitem, order, orderitem, authentication
 
 app = FastAPI()
 
@@ -15,15 +16,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(user.router, prefix="/api", tags=["user"])
-app.include_router(kantin.router, prefix="/api", tags=["kantin"])
-app.include_router(menuitem.router, prefix="/api", tags=["menuitem"])
-app.include_router(order.router, prefix="/api", tags=["order"])
-app.include_router(orderitem.router, prefix="/api", tags=["orderitem"])
-app.include_router(authentication.router, prefix="/api", tags=["authentication"])
+# Import routers with error handling
+routers_to_load = [
+    ("user", "/api", ["user"]),
+    ("kantin", "/api", ["kantin"]),
+    ("menuitem", "/api", ["menuitem"]),
+    ("order", "/api", ["order"]),
+    ("orderitem", "/api", ["orderitem"]),
+    ("authentication", "/api", ["authentication"]),
+]
+
+for module_name, prefix, tags in routers_to_load:
+    try:
+        module = __import__(f"src.api.routes.{module_name}", fromlist=["router"])
+        app.include_router(module.router, prefix=prefix, tags=tags)
+        print(f"✓ Loaded {module_name} router")
+    except Exception as e:
+        print(f"✗ Failed to load {module_name}: {e}")
+        traceback.print_exc()
 
 @app.get("/")
 async def root():
     return {"message": "vercel anjg, mending big cloud"}
 
-app = app
+@app.get("/debug")
+async def debug():
+    return {
+        "routes": [{"path": route.path, "name": route.name} for route in app.routes],
+        "routers_loaded": len([r for r in app.routes if r.path != "/"]),
+    }
