@@ -1,3 +1,7 @@
+import React from "react";
+
+
+
 const Button = (props) => {
     const {children, className = "bg-black"} = props;
     return (

@@ -3,3 +3,13 @@
 @tailwind utilities;
 
 
+
+/* Cara menggunakan */
+body {
+  font-family: 'JavaSoul', sans-serif;
+}
+
+/* Atau buat class khusus */
+.javasoul-font {
+  font-family: 'JavaSoul', sans-serif;
+}

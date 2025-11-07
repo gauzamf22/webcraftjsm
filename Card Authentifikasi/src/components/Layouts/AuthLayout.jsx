@@ -1,4 +1,6 @@
-const AuthLayout = (props) => {
+import React from "react";
+
+const AuthLayout = () => {
   return (
     <div className="flex justify-center bg-orange-300 min-h-screen items-center">
       <div className="w-full max-w-xs bg-white shadow-lg rounded-2xl p-8">
@@ -27,3 +29,5 @@ const AuthLayout = (props) => {
     </div>
   );
 };
+
+export default AuthLayout;
