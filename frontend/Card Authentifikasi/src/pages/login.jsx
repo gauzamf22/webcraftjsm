@@ -22,7 +22,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://yield-attending-rome-carter.trycloudflare.com/api/login', {
+      const response = await fetch('https://webcraftjsm.vercel.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

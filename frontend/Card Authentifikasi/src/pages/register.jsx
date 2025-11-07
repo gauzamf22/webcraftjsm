@@ -33,7 +33,7 @@ const Register = () => {
 
     try {
       // Replace with your actual API endpoint
-      const response = await fetch("https://yield-attending-rome-carter.trycloudflare.com/api/register", {
+      const response = await fetch("https://webcraftjsm.vercel.app/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
