@@ -1,5 +1,5 @@
-from schemas.relationships.orderitem_menuitem import OrderItemWithDetailsResponse
-from schemas.order import OrderResponse
+from ...schemas.relationships.orderitem_menuitem import OrderItemWithDetailsResponse
+from ...schemas.order import OrderResponse
 from typing import List
 
 class OrderWithDetailsResponse(OrderResponse):

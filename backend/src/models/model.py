@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Numeric, Text, TIMESTAMP, CheckConstraint
 from sqlalchemy.orm import relationship
-from database.db import base, engine
+from ..database.db import base, engine
 
 # ==== Schema DB nyaaa (cek db_schema.md) ====
 
