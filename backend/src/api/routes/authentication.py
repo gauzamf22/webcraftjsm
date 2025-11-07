@@ -10,7 +10,6 @@ import os
 from dotenv import load_dotenv
 from schemas.login import LoginRequest, LoginResponse
 from schemas.users import UserResponse, UserCreate
-import hashlib
 
 # OAuth2PasswordBearer, dibuat full sama chatgpt wkw, ga sempettt
 

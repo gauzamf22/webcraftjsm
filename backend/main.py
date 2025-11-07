@@ -20,3 +20,9 @@ app.include_router(menuitem.router, prefix="/api", tags=["menuitem"])
 app.include_router(order.router, prefix="/api", tags=["order"])
 app.include_router(orderitem.router, prefix="/api", tags=["orderitem"])
 app.include_router(authentication.router, prefix="/api", tags=["authentication"])
+
+@app.get("/")
+async def root():
+    return {"message": "vercel anjg, mending big cloud"}
+
+app = app

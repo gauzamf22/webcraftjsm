@@ -1,3 +1,4 @@
-.env            # isinya password dan url, rahasia negara
-__pycahce__/     # cache gapenting
-.vscode/         # config vscode ku, gapenting juga
+.env          
+__pycahce__/     
+.vscode/         
+.vercel
