@@ -1,9 +1,9 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from schemas.order import OrderUpdate, OrderCreate, OrderResponse
-from schemas.relationships.order_detail import OrderWithDetailsResponse
-from database.db import get_db
-from models.model import Order
+from ...schemas.order import OrderUpdate, OrderCreate, OrderResponse
+from ...schemas.relationships.order_detail import OrderWithDetailsResponse
+from ...database.db import get_db
+from ...models.model import Order
 from typing import List
 
 router = APIRouter()

@@ -1,9 +1,9 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from schemas.kantin import KantinCreate, KantinResponse, KantinUpdate
-from schemas.relationships.kantin_menuitem import KantinWithMenuResponse
-from database.db import get_db
-from models.model import Kantin
+from ...schemas.kantin import KantinCreate, KantinResponse, KantinUpdate
+from ...schemas.relationships.kantin_menuitem import KantinWithMenuResponse
+from ...database.db import get_db
+from ...models.model import Kantin
 
 router = APIRouter()
 

@@ -1,8 +1,8 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from schemas.menuitem import MenuItemCreate, MenuItemResponse, MenuItemUpdate
-from database.db import get_db
-from models.model import MenuItem, Kantin
+from ...schemas.menuitem import MenuItemCreate, MenuItemResponse, MenuItemUpdate
+from ...database.db import get_db
+from ...models.model import MenuItem, Kantin
 from decimal import Decimal
 
 router = APIRouter()

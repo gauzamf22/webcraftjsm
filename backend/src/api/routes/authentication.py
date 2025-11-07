@@ -1,15 +1,15 @@
 from fastapi import Depends, HTTPException, APIRouter, status
 from sqlalchemy.orm import Session
-from database.db import get_db
-from models.model import User
+from ...database.db import get_db
+from ...models.model import User
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 import os
 from dotenv import load_dotenv
-from schemas.login import LoginRequest, LoginResponse
-from schemas.users import UserResponse, UserCreate
+from ...schemas.login import LoginRequest, LoginResponse
+from ...schemas.users import UserResponse, UserCreate
 
 # OAuth2PasswordBearer, dibuat full sama chatgpt wkw, ga sempettt
 
