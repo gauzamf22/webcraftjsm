@@ -1,28 +1,19 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from src.api.routes import user, kantin, menuitem, order, orderitem, authentication
-
-
+import os
+import sys
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(user.router, prefix="/api", tags=["user"])
-app.include_router(kantin.router, prefix="/api", tags=["kantin"])
-app.include_router(menuitem.router, prefix="/api", tags=["menuitem"])
-app.include_router(order.router, prefix="/api", tags=["order"])
-app.include_router(orderitem.router, prefix="/api", tags=["orderitem"])
-app.include_router(authentication.router, prefix="/api", tags=["authentication"])
-
 @app.get("/")
-async def root():
-    return {"message": "vercel anjg, mending big cloud"}
+def read_root():
+    return {"message": "Backend is running!"}
 
-app = app
+@app.get("/debug")
+def debug_info():
+    return {
+        "python_version": sys.version,
+        "python_path": sys.path,
+        "current_dir": os.getcwd(),
+        "env_vars": list(os.environ.keys()),
+        "files": os.listdir('.')
+    }
