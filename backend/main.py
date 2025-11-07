@@ -1,19 +1,49 @@
 from fastapi import FastAPI
-import os
 import sys
+from pathlib import Path
+
+# Add backend to path
+sys.path.insert(0, str(Path(__file__).parent))
 
 app = FastAPI()
 
 @app.get("/")
-def read_root():
-    return {"message": "Backend is running!"}
+def root():
+    return {"status": "alive"}
 
-@app.get("/debug")
-def debug_info():
-    return {
-        "python_version": sys.version,
-        "python_path": sys.path,
-        "current_dir": os.getcwd(),
-        "env_vars": list(os.environ.keys()),
-        "files": os.listdir('.')
-    }
+@app.get("/test-imports")
+def test_imports():
+    errors = []
+    
+    # Test each import individually
+    try:
+        from schemas.users import UserCreate 
+        errors.append({"schemas.users": "OK"})
+    except Exception as e:
+        errors.append({"schemas": str(e)})
+    
+    try:
+        from src.schemas.users import UserCreate 
+        errors.append({"src.schemas.users": "OK"})
+    except Exception as e:
+        errors.append({"schemas": str(e)})
+
+    try:
+        from api.routes.authentication import get_user_by_email
+        errors.append({"routes": "OK"})
+    except Exception as e:
+        errors.append({"routes": str(e)})
+    
+    try:
+        from database import db
+        errors.append({"database": "OK"})
+    except Exception as e:
+        errors.append({"database": str(e)})
+    
+    try:
+        from models import model
+        errors.append({"models": "OK"})
+    except Exception as e:
+        errors.append({"models": str(e)})
+    
+    return {"import_tests": errors}
