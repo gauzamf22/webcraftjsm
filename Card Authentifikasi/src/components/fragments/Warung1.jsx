@@ -10,7 +10,7 @@ export default function Warung1() {
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col px-6 py-20 gap-6"
+      className="min-h-screen w-full flex flex-col px-6 py-10 gap-6 relative"
       style={{
         backgroundImage: `linear-gradient(to right, #F0BB78, #FFD39C), url(${Vector})`,
         backgroundBlendMode: "overlay",
@@ -20,14 +20,14 @@ export default function Warung1() {
       }}
     >
       {/* === BAGIAN ATAS: FLEX KIRI & KANAN === */}
-      <div className="flex flex-col md:flex-row flex-wrap items-start justify-start gap-6 w-full max-w-6xl mx-auto mt-40">
+      <div className="flex flex-row items-start justify-center gap-6 w-full max-w-6xl mx-auto mt-20">
         {/* KIRI: Box */}
-        <div className="flex justify-start items-start md:basis-1/2">
-          <Box className="w-[300px] sm:w-[450px] md:w-[600px] lg:w-[750px] scale-150 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]" />
+        <div className="flex justify-start items-start translate-y-[-55px]">
+          <Box className="w-[300px] sm:w-[450px] md:w-[600px] lg:w-[750px] scale-125 drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]" />
         </div>
 
         {/* KANAN: Maskot */}
-        <div className="flex justify-center items-center md:basis-1/2 scale-75">
+        <div className="flex justify-center items-start translate-y-[-100px] relative z-0">
           <img
             src={cihuy}
             alt="Maskot GamadanG"
@@ -36,8 +36,8 @@ export default function Warung1() {
         </div>
       </div>
 
-      {/* === BAGIAN FRAME2 === */}
-      <div className="border-white p-8 flex justify-center items-center">
+      {/* === FRAME2 DI ATAS MASKOT === */}
+      <div className="relative z-6 -translate-y-[425px] flex justify-center items-center">
         <Frame2 />
       </div>
     </div>
