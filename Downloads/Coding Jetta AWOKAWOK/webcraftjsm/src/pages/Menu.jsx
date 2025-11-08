@@ -1,5 +1,6 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
+import { motion } from "framer-motion";
 
 const MenuCard = ({
   name,
@@ -8,8 +9,34 @@ const MenuCard = ({
   description,
   available,
   onDelete,
+  index,
 }) => (
-  <div className="w-full bg-white rounded-2xl border-2 border-gray-200 p-4 sm:p-5 md:p-6 lg:p-6 xl:p-7 2xl:p-7 flex flex-col gap-3 xl:gap-3.5 hover:shadow-lg transition-shadow">
+  <motion.div
+    variants={{
+      hidden: { opacity: 0, y: 30, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          type: "spring",
+          stiffness: 100,
+          damping: 15,
+        },
+      },
+    }}
+    whileHover={{
+      scale: 1.02,
+      y: -8,
+      zIndex: 10,
+      boxShadow:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+      transition: { type: "spring", stiffness: 300, damping: 20 },
+    }}
+    whileTap={{ scale: 0.98 }}
+    style={{ position: "relative" }}
+    className="w-full bg-white rounded-2xl border-2 border-gray-200 p-4 sm:p-5 md:p-6 lg:p-6 xl:p-7 2xl:p-7 flex flex-col gap-3 xl:gap-3.5"
+  >
     {/* Header: Name and Price */}
     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
       <div className="flex-1">
@@ -45,17 +72,19 @@ const MenuCard = ({
           {available ? "Tersedia" : "Tidak Tersedia"}
         </span>
       </div>
-      <button
+      <motion.button
         onClick={onDelete}
-        className="flex-1 h-11 sm:h-12 md:h-14 lg:h-14 xl:h-14 2xl:h-16 bg-red-600 rounded-2xl flex items-center justify-center hover:bg-red-700 active:bg-red-800 transition-colors"
+        whileHover={{ scale: 1.05, backgroundColor: "#b91c1c" }}
+        whileTap={{ scale: 0.95 }}
+        className="flex-1 h-11 sm:h-12 md:h-14 lg:h-14 xl:h-14 2xl:h-16 bg-red-600 rounded-2xl flex items-center justify-center transition-colors"
         aria-label={`Hapus menu ${name}`}
       >
         <span className="text-white text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-xl font-semibold font-poppins">
           Hapus
         </span>
-      </button>
+      </motion.button>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default function App() {
@@ -102,16 +131,27 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-orange-300 to-orange-300 relative overflow-x-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen w-full bg-gradient-to-b from-orange-300 to-orange-300 relative overflow-x-hidden"
+    >
       {/* Background decorative elements - hidden on mobile */}
-      <div
-        className="hidden lg:block absolute w-full h-[500px] -left-20 -top-40 opacity-10 bg-orange-300 rounded-full blur-3xl"
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 0.1 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="hidden lg:block absolute w-full h-[500px] -left-20 -top-40 bg-orange-300 rounded-full blur-3xl"
         aria-hidden="true"
-      ></div>
-      <div
-        className="hidden lg:block absolute w-full h-[500px] -left-20 bottom-0 opacity-10 bg-orange-300 rounded-full blur-3xl"
+      ></motion.div>
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 0.1 }}
+        transition={{ duration: 1, delay: 0.4 }}
+        className="hidden lg:block absolute w-full h-[500px] -left-20 bottom-0 bg-orange-300 rounded-full blur-3xl"
         aria-hidden="true"
-      ></div>
+      ></motion.div>
 
       {/* Navigation Header */}
       <Navbar />
@@ -119,7 +159,15 @@ export default function App() {
       {/* Page Content */}
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-20 sm:py-24 lg:py-28 xl:py-32">
         {/* Page Title */}
-        <h2
+        <motion.h2
+          initial={{ y: -100, opacity: 0, scale: 0.5, rotateX: 90 }}
+          animate={{ y: 0, opacity: 1, scale: 1, rotateX: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 0.3,
+          }}
           className="text-center text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] font-normal font-javassoul mb-8 sm:mb-10 lg:mb-12 xl:mb-16 drop-shadow-lg"
           style={{
             textShadow: `
@@ -136,30 +184,64 @@ export default function App() {
           }}
         >
           Manajemen Menu
-        </h2>
+        </motion.h2>
 
         {/* Main Content Container */}
-        <main className="bg-white rounded-3xl border border-gray-200 shadow-xl p-4 sm:p-6 lg:p-8 xl:p-10 2xl:p-12">
+        <motion.main
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.5,
+            duration: 0.6,
+            type: "spring",
+            stiffness: 100,
+          }}
+          className="bg-white rounded-3xl border border-gray-200 shadow-xl p-4 sm:p-6 lg:p-8 xl:p-10 2xl:p-12"
+        >
           {/* Section Header with Add Button */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-5 xl:gap-6 mb-6 sm:mb-8 xl:mb-10">
-            <h3 className="text-yellow-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold font-poppins">
+            <motion.h3
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.7, type: "spring", stiffness: 100 }}
+              className="text-yellow-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold font-poppins"
+            >
               Menu Warung Gauza
-            </h3>
+            </motion.h3>
 
             {/* Add Menu Button */}
-            <button
+            <motion.button
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.7, type: "spring", stiffness: 100 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-5 sm:px-6 lg:px-8 xl:px-8 2xl:px-10 py-2.5 sm:py-3 lg:py-3.5 xl:py-4 2xl:py-4 bg-yellow-900 rounded-2xl hover:bg-yellow-800 active:bg-yellow-950 transition-colors shadow-md whitespace-nowrap"
               aria-label="Tambah menu baru"
             >
               <span className="block text-center text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-2xl font-semibold font-poppins">
                 Tambah Menu
               </span>
-            </button>
+            </motion.button>
           </div>
 
           {/* Menu Cards Grid - Responsive */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 xl:gap-8 2xl:gap-10">
-            {menuItems.map((item) => (
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 xl:gap-8 2xl:gap-10"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.6,
+                },
+              },
+            }}
+          >
+            {menuItems.map((item, index) => (
               <MenuCard
                 key={item.id}
                 name={item.name}
@@ -168,11 +250,12 @@ export default function App() {
                 description={item.description}
                 available={item.available}
                 onDelete={() => handleDeleteMenu(item.id)}
+                index={index}
               />
             ))}
-          </div>
-        </main>
+          </motion.div>
+        </motion.main>
       </div>
-    </div>
+    </motion.div>
   );
 }
