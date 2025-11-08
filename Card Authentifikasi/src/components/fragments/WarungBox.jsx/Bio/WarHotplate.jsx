@@ -3,7 +3,7 @@ import React from "react";
 export const WarungSatu = () => {
   const canteenData = {
     name: "Warung Pawon Hotplate Bu Yani ",
-    faculty: "Fakultas MIPA",
+    faculty: "Fakultas Geografi",
     hours: "07:00-15:00",
   };
 
@@ -16,7 +16,7 @@ export const WarungSatu = () => {
           aria-label="Canteen information card"
         />
 
-        <h1 className=" absolute top-[calc(50.00%-_62px)] left-[calc(50.00%-_240px)] w-[379px] h-[35px] flex items-start justify-left [font-family:'Poppins-Bold',Helvetica] font-bold text-white text-[50px] tracking-[0] leading-[normal] whitespace-nowrap mt--1">
+        <h1 className=" absolute top-[calc(50.00%-_62px)] left-[calc(50.00%-_240px)] w-[379px] h-[35px] flex items-start justify-left [font-family:'Poppins-Bold',Helvetica] font-bold text-white text-[35px] tracking-[0] leading-[normal] whitespace-nowrap mt--1">
           {canteenData.name}
         </h1>
 

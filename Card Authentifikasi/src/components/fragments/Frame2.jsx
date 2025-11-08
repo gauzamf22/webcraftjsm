@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import fotoKantin from "../../assets/Foto Kantin.svg";
 import download from "../../assets/download 2.svg";
 import { useNavigate } from "react-router-dom";
+import maskot from "../../assets/maskot.svg";
 
 export const Frame2 = () => {
   const navigate = useNavigate(); 
@@ -11,44 +12,48 @@ export const Frame2 = () => {
     {
       id: 1,
       image: fotoKantin,
-      title: "Warung Bakso nakmantu",
+      title: "Warung Pawon Hotplate Bu Yani",
       description:
         "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
     },
     {
-      id: 1,
-      image: fotoKantin,
-      title: "Warung Bakso nakmantu",
+      id: 2,
+      image: maskot,
+      title: "Warung Default",
       description:
-        "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
+        "Warung akan segera hadir, sabar yaa :)",
+      alert : "Fitur sedang disiapkan, nantikan kejutannya!",
     },
     {
-      id: 1,
-      image: fotoKantin,
-      title: "Warung Bakso nakmantu",
+      id: 3,
+      image: maskot,
+      title: "Warung Default",
       description:
-        "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
+    "Warung akan seger hadir, sabar yaa :)",
+      alert : "Fitur sedang disiapkan, nantikan kejutannya"    },
+    {
+      id: 4,
+      image: maskot,
+      title: "Warung Default",
+      description:
+        "Warung akan segera hadir, sabar yaa :)",
+      alert : "Fitur sedang disiapkan, nantikan kejutannya",
     },
     {
-      id: 1,
-      image: fotoKantin,
-      title: "Warung Bakso nakmantu",
+      id: 5,
+      image: maskot,
+      title: "Warung Default",
       description:
-        "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
+        "Warung akan segera hadir, sabar yaa :)",
+      alert : "Fitur sedang disiapkan, nantikan kejutannya",
     },
     {
-      id: 1,
-      image: fotoKantin,
-      title: "Warung Bakso nakmantu",
+      id: 6,
+      image: maskot,
+      title: "Warung Default",
       description:
-        "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
-    },
-    {
-      id: 1,
-      image: fotoKantin,
-      title: "Warung Bakso nakmantu",
-      description:
-        "Nikmati kelezatan bakso yang menggugah selera di Warung Bakso Nakmantu — tempat di mana cita rasa dan kenyamanan bertemu dalam satu mangkuk.",
+        "Warung akan segera hadir, sabar yaa :)",
+      alert : "Fitur sedang disiapkan, nantikan kejutannya",
     },
     // ...data lainnya tetap sama
   ];
@@ -73,6 +78,14 @@ export const Frame2 = () => {
       ...prev,
       [kantinId]: buttonId,
     }));
+
+    const selectedKantin = kantinData.find((k) => k.id === kantinId);
+
+  if (selectedKantin?.alert) {
+    alert(selectedKantin.alert);
+    return;
+  }
+
 
     if (buttonId === "dine-in" && kantinId === 1) {
       navigate("/Menuhot");

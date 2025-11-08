@@ -1,15 +1,15 @@
 import React from "react";
 
-export const WarungTiga = () => {
+export const Box = () => {
   const canteenData = {
-    name: "Warung Aldiano ",
-    faculty: "Universiats Gadjah Mada",
-    hours: "07:00-15:00",
+    name: "Kantin Pujale",
+    faculty: "Universitas Gadjah Mada",
+    hours: "07:00-16:00",
   };
 
   return (
     <div className="relative w-[668px] h-[217px] scale-[0.6]">
-    <div className="relative w-[674px] h-[217px]">
+    <div className="relative w-[674px] h-[217px] ">
         <div
           className="absolute top-[calc(50.00%-_100px)] left-[calc(50.00%-_316px)] w-[647px] h-[230px] bg-[#704443] rounded-[44px] border-4 border-dashed border-white"
           role="article"
@@ -20,7 +20,7 @@ export const WarungTiga = () => {
           {canteenData.name}
         </h1>
 
-        <p className="absolute top-[calc(50.00%-_9px)] left-[calc(50.00%-_240px)] w-[495px] h-8 flex items-start justify-left [font-family:'Poppins-Regular',Helvetica] font-normal text-white text-[42px] tracking-[0] leading-[normal] whitespace-nowrap mt-1">
+        <p className="absolute top-[calc(50.00%-_9px)] left-[calc(50.00%-_240px)] w-[495px] h-8 flex items-start justify-left [font-family:'Poppins-Regular',Helvetica] font-normal text-white text-[50px] tracking-[0] leading-[normal] whitespace-nowrap mt-1">
           {canteenData.faculty}
         </p>
 

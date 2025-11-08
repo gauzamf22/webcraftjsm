@@ -4,7 +4,7 @@ import download from "../../assets/download 2.svg";
 import { useNavigate } from "react-router-dom";
 import maskot from "../../assets/maskot.svg";
 
-export const Frame3 = () => {
+export const Frame4 = () => {
   const navigate = useNavigate(); 
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -12,7 +12,7 @@ export const Frame3 = () => {
     {
       id: 1,
       image: fotoKantin,
-      title: "Warung Hotplate Bu Yani",
+      title: "Warung Qama",
       description:
         " ",
     },

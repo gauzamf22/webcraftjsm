@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Box } from "./Kantin1"; // 🔹 Komponen kiri
+import { Box } from "./Kantin3"; // 🔹 Komponen kiri
 import cihuy from "../../assets/cihuy.svg"; // 🔹 Gambar kanan
 import Vector from "../../assets/Group 4.svg";
-import { Frame2 } from "./Frame2"; // 🔹 Komponen tambahan
+import { Frame5 } from "./Frame5"; // 🔹 Komponen tambahan
 
-export default function Warung1() {
+
+
+export default function Warung2() {
   const navigate = useNavigate();
 
   return (
@@ -38,7 +40,7 @@ export default function Warung1() {
 
       {/* === FRAME2 DI ATAS MASKOT === */}
       <div className="relative z-6 -translate-y-[425px] flex justify-center items-center">
-        <Frame2 />
+        <Frame5 />
       </div>
     </div>
   );

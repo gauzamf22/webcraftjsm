@@ -53,6 +53,15 @@ export const Frame = () => {
       case 1:
         navigate("/Warung1");
         break;
+      case 2:
+        navigate("/Warung2");
+        break;
+      case 3:
+        navigate("/Warung3");
+        break;
+      case 4:
+        navigate("/Warung4");
+        break;
       default:
         alert("Halaman kantin belum tersedia 😅");
     }

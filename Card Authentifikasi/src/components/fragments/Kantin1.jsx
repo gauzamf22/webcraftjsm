@@ -3,7 +3,7 @@ import React from "react";
 export const Box = () => {
   const canteenData = {
     name: "Kantin BioGeo",
-    faculty: "Fakultas MIPA",
+    faculty: "Biologi dan Geografi UGM",
     hours: "07:00-15:00",
   };
 
@@ -20,7 +20,7 @@ export const Box = () => {
           {canteenData.name}
         </h1>
 
-        <p className="absolute top-[calc(50.00%-_9px)] left-[calc(50.00%-_240px)] w-[495px] h-8 flex items-start justify-left [font-family:'Poppins-Regular',Helvetica] font-normal text-white text-[50px] tracking-[0] leading-[normal] whitespace-nowrap mt-1">
+        <p className="absolute top-[calc(50.00%-_9px)] left-[calc(50.00%-_240px)] w-[495px] h-8 flex items-start justify-left [font-family:'Poppins-Regular',Helvetica] font-normal text-white text-[45px] tracking-[0] leading-[normal] whitespace-nowrap mt-1">
           {canteenData.faculty}
         </p>
 

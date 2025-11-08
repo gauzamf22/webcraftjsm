@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { WarungSatu } from "./WarungBox.jsx/Bio/WarHotplate";
 import cihuy from "../../assets/cihuy.svg";
 import Vector from "../../assets/Group 4.svg";
+import { Fr1 } from "./Fr1";
 import { Frame3 } from "./Frame3";
-import { Frame2 } from "./Frame2";
 import image1 from "../../assets/beli.svg";
 import Bubar from "./Bubar";
-import { Box } from "./Kantin";
+import { Box } from "./Kantin1";
 import Rectangle from "../../assets2/Rectangle 16.svg";
 
 export default function Menuhot() {
@@ -55,7 +55,7 @@ export default function Menuhot() {
               translate-x-[-100px] sm:translate-x-[-250px] md:translate-x-[-400px] lg:translate-x-[-510px]
             "
           >
-            <Box
+            <WarungSatu
               className="
                 w-[260px] sm:w-[400px] md:w-[550px] lg:w-[700px] 
                 scale-110 sm:scale-125 
@@ -71,7 +71,7 @@ export default function Menuhot() {
 
       {/* ✅ Frame3 diletakkan setelah Rectangle dan Box */}
             <div className="relative z-20 flex justify-center items-center translate-y-[200px] sm:translate-y-[250px] md:translate-y-[-70px]">
-        <Frame3 />
+        <Fr1 />
       </div>
 
       {/* ✅ Footer */}
