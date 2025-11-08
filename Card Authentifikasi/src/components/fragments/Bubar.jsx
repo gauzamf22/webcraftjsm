@@ -8,41 +8,63 @@ export const Bubar = () => {
   };
 
   return (
-    <div className="flex items-center gap-6">
-      {/* Container Utama */}
-      <div className="flex w-[1306px] h-[217px] items-center justify-between px-20 py-[70px] relative bg-[#704443] rounded-[44px] border-2 border-dashed border-white">
-        
-        {/* Bagian Total Belanja */}
-        <div className="relative w-[357px] h-[79px] mt-[-1.00px] mb-[-1.00px]">
-          <div className="absolute top-0 left-0 w-[353px] h-[26px] flex items-center justify-center [font-family:'Poppins-Bold',Helvetica] font-bold text-white text-4xl tracking-[0] leading-[normal] whitespace-nowrap">
-            Total Belanja:
+    <div className="fixed bottom-0 left-0 w-full z-50 bg-transparent px-2 sm:px-4 md:px-6 pb-[env(safe-area-inset-bottom)]">
+      <div className="flex items-center justify-center flex-wrap gap-3 sm:gap-4 py-4 sm:py-6 w-full">
+        {/* ✅ Container Utama */}
+        <div
+          className="
+            flex items-center justify-between 
+            w-full max-w-[700px] 
+            px-4 sm:px-6 py-4 sm:py-6 
+            bg-[#704443] rounded-[25px] sm:rounded-[30px] 
+            border-2 border-dashed border-white 
+            hover:scale-[1.03] transition-transform duration-300
+          "
+        >
+          {/* ✅ Total Belanja */}
+          <div className="flex flex-col items-start">
+            <span className="text-white text-base sm:text-lg md:text-xl font-bold">
+              Total Belanja:
+            </span>
+            <span className="text-white text-2xl sm:text-3xl font-black">
+              Rp1.000.000
+            </span>
           </div>
-          <div className="absolute top-[43px] left-0 w-[353px] h-9 flex items-center justify-center [font-family:'Poppins-Black',Helvetica] font-black text-white text-[46px] tracking-[0] leading-[normal] whitespace-nowrap">
-            Rp1.000.000
-          </div>
-        </div>
 
-        {/* Tombol Deskripsi */}
-        <div className="relative w-[280px] h-[46px] mr-[-2.00px]">
+          {/* ✅ Tombol Deskripsi */}
           <button
             onClick={handleClickDeskripsi}
-            className="absolute top-2.5 left-[66px] w-[173px] h-[26px] focus:outline-none"
+            className="
+              w-[120px] sm:w-[150px] h-[36px] sm:h-[40px] 
+              flex items-center justify-center
+            "
           >
             <img
-              className="w-full h-full"
+              className="w-full h-full object-contain"
               alt="Deskripsi dan Ikon"
               src={Desk}
             />
           </button>
         </div>
-      </div>
 
-      {/* Panah Kanan di luar container */}
-      <img
-        src={ArrowKanan}
-        alt="Panah Kanan"
-        className="w-[30px] h-[30px] object-contain"
-      />
+        {/* ✅ Panah Kanan */}
+        <div
+          className="
+            w-[80px] sm:w-[100px] md:w-[120px]
+            flex items-center justify-center
+            cursor-pointer transition-transform duration-150
+            hover:scale-95 active:scale-90
+          "
+        >
+          <img
+            src={ArrowKanan}
+            alt="Panah Kanan"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   );
 };
+
+export default Bubar;

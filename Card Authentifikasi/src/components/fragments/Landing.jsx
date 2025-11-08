@@ -25,7 +25,7 @@ export default function Landing() {
       {/* === BAGIAN ATAS: FLEX KIRI & KANAN === */}
       <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-14 w-full max-w-6xl mx-auto">
         {/* KIRI: Logo, Deskripsi, Tombol */}
-        <div className="flex flex-col justify-center items-center md:items-start gap-8 md:basis-1/2 text-white animate-pulse">
+        <div className="flex flex-col justify-center items-center md:items-start gap-8 md:basis-1/2 text-white ">
           <img
             src={GamadanG}
             alt="Logo GamadanG"

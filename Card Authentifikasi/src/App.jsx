@@ -5,6 +5,8 @@ import Landing from "./components/fragments/Landing";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./components/fragments/Dashboard";
+import Menuhot from './components/fragments/Menuhot';
+
 
 // 🔹 Import halaman Warung
 import Warung1 from "./components/fragments/Warung1";
@@ -29,6 +31,8 @@ function App() {
 
         {/* 🔹 Halaman kantin */}
         <Route path="/Warung1" element={<Warung1 />} />
+
+        <Route path="/Menuhot" element ={<Menuhot/>} />
         
       </Routes>
     </Router>

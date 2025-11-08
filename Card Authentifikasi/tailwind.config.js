@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'javasoul': ['JavaSoul', 'sans-serif'],
+        poppins: ["Poppins", "system-ui", "sans-serif"],
+        javassoul: ["Javassoul", "cursive", "Poppins", "sans-serif"],
       },
     },
   },

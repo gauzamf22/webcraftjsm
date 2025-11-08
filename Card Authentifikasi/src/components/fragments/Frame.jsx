@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom"; // ✅ untuk navigasi halaman
 
 // 🔹 Import semua gambar kantin
 import fotoKantin from "../../assets/Foto Kantin.svg";
-import Biogeo from "../../assets/Kantin Biogeo.svg";
-import Kansas from "../../assets/Kantin Kansas.svg";
-import Pujale from "../../assets/Kantin Pujale.svg";
-import Bonbin from "../../assets/Kantin Bonbin.svg";
+import Biogeo from "../../assets/bgi.svg";
+import Kansas from "../../assets/kss.svg";
+import Pujale from "../../assets/Pujale.svg";
+import Bonbin from "../../assets/unnamed.svg";
 
 
 
@@ -80,12 +80,12 @@ export const Frame = () => {
           {/* Gambar kantin */}
           <div
             className="
-              w-[228px] h-[278px] bg-white flex items-center justify-center
+              w-[228px] h-[278px] bg-white flex 
               rounded-md flex-shrink-0 overflow-hidden
             "
           >
             <img
-              className="max-w-full max-h-full object-contain"
+              className="w-full h-full object-cover"
               alt={`Foto ${kantin.title}`}
               src={kantin.image}
             />
