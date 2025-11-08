@@ -26,18 +26,14 @@ const MenuCard = ({
   index,
 }) => (
   <motion.div
-    variants={{
-      hidden: { opacity: 0, y: 30, scale: 0.95 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-        },
-      },
+    layout
+    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    exit={{ opacity: 0, y: -20, scale: 0.9 }}
+    transition={{
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
     }}
     whileHover={{
       scale: 1.02,
@@ -329,18 +325,7 @@ export default function Menu() {
           <AnimatePresence mode="popLayout">
             <motion.div
               className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2,
-                  },
-                },
-              }}
+              layout
             >
               {menuItems.map((item, index) => (
                 <MenuCard
