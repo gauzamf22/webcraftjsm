@@ -2,13 +2,16 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/fragments/Navbar";
 import Landing from "./components/fragments/Landing";
-import Login from "./pages/login";
-import Register from "./pages/register";
+import Register from "./components/fragments/Register";
 import Dashboard from "./components/fragments/Dashboard";
 import Menuhot from './components/fragments/Menuhot';
 import MenuQoma from './components/fragments/MenuQoma';
 import Menualdiano from './components/fragments/Menualdiano';
 import Menujusbonbin from './components/fragments/Menujusbonbin';
+import Analytics from './components/fragments/Analytics';
+import Login from './components/fragments/Login';
+import Pesanan from './components/fragments/pesanan';
+import Menu from './components/fragments/Menu';
 
 
 
@@ -32,6 +35,7 @@ function App() {
         {/* Halaman login & register */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/Menu" element={<Menu />} />
 
         {/* Halaman dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
