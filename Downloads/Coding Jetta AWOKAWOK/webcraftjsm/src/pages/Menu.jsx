@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Plus, Trash2, Check, X } from "lucide-react";
-import bgImage from "@/assets/bg.svg";
+import bgImage from "@/assets/Background.svg";
 
 const MenuCard = ({
   name,

@@ -22,7 +22,7 @@ import {
   Clock,
   Package,
 } from "lucide-react";
-import bgImage from "@/assets/bg.svg";
+import bgImage from "@/assets/Background.svg";
 
 export default function Analytics() {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -199,7 +199,7 @@ export default function Analytics() {
       />
       <Navbar />
       <motion.div
-        className="relative z-10 p-8 pt-24 max-w-7xl mx-auto"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: [0.19, 1.0, 0.22, 1.0] }}

@@ -1,19 +1,15 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import Palelu from "../assets/palelu.svg";
+import Palelu from "../assets/Palelu.svg";
 
 function Navbar() {
-  const [state, dispatch] = useReducer(reducer, { property1: "default" });
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 30);
   });
-
-  const dashboardPadding =
-    state.property1 === "after" ? "py-1.5 px-5" : "py-1.5 px-4";
 
   return (
     <motion.div
@@ -30,8 +26,6 @@ function Navbar() {
       className="fixed left-0 right-0 z-50"
     >
       <motion.nav
-        onMouseEnter={() => dispatch("mouse_enter")}
-        onMouseLeave={() => dispatch("mouse_leave")}
         initial={false}
         animate={{
           borderRadius: isScrolled ? 30 : 0,
@@ -41,101 +35,64 @@ function Navbar() {
           ease: [0.16, 1, 0.3, 1],
         }}
         className={`
-          flex items-center justify-between
-          bg-white
-          px-8 py-3
+          backdrop-blur-md bg-white/90 border-b-4 border-orange-400
           ${
             isScrolled
               ? "shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25),0_8px_16px_-8px_rgba(0,0,0,0.1)]"
-              : ""
+              : "shadow-lg"
           }
         `}
       >
-        {/* KIRI */}
-        <div className="flex items-center h-full space-x-2 sm:space-x-3 md:space-x-5 pl-2 sm:pl-3 md:pl-4">
-          <img
-            src={Palelu}
-            alt="GamadanG Logo"
-            className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10 rounded"
-          />
-          <h1
-            className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl font-normal font-javassoul leading-none mt-2.5"
-            style={{
-              textShadow: `
-              -1px -1px 0 #E7A24A,
-              1px -1px 0 #E7A24A,
-              -1px 1px 0 #E7A24A,
-              1px 1px 0 #E7A24A,
-              -1px 0 0 #E7A24A,
-              1px 0 0 #E7A24A,
-              0 -1px 0 #E7A24A,
-              0 1px 0 #E7A24A,
-              0 0 8px rgba(240, 138, 6, 0.5)
-            `,
-            }}
-          >
-            GamadanG
-          </h1>
-        </div>
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 py-2 sm:py-4">
+          <div className="flex items-center justify-between gap-1">
+            <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+              <img
+                src={Palelu}
+                alt="GamadanG"
+                className="h-8 w-8 sm:h-12 sm:w-12 md:h-14 md:w-14"
+              />
+              <h1 className="font-javassoul text-lg sm:text-3xl md:text-4xl bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent drop-shadow-lg whitespace-nowrap leading-none mt-1 sm:mt-2">
+                GamadanG
+              </h1>
+            </div>
 
-        {/* KANAN */}
-        <div className="flex items-center gap-1 sm:gap-2 md:gap-3 xl:gap-4 text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-medium pr-2 sm:pr-3 md:pr-4 py-2">
-          {/* Home */}
-          <Link
-            to="/#kenapa-gamadang"
-            className={`
-            px-1.5 sm:px-2 md:px-3 xl:px-4 py-1
-            text-neutral-700 hover:text-neutral-900
-            transition-colors duration-300
-            font-poppins
-          `}
-          >
-            Home
-          </Link>
+            <div className="flex items-center gap-1.5 sm:gap-4 md:gap-8 flex-shrink-0">
+              <Link to="/menu">
+                <motion.div
+                  className="text-gray-700 hover:text-orange-600 font-poppins font-semibold transition-colors duration-300 text-[10px] sm:text-sm md:text-base whitespace-nowrap hidden sm:block"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Menu
+                </motion.div>
+              </Link>
 
-          {/* About */}
-          <Link
-            to="/"
-            className={`
-            px-1.5 sm:px-2 md:px-3 xl:px-4 py-1
-            text-neutral-700 hover:text-neutral-900
-            transition-colors duration-200
-            font-poppins
-          `}
-          >
-            About
-          </Link>
+              <Link to="/pesanan">
+                <motion.div
+                  className="text-gray-700 hover:text-orange-600 font-poppins font-semibold transition-colors duration-300 text-[10px] sm:text-sm md:text-base whitespace-nowrap"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Pesanan
+                </motion.div>
+              </Link>
 
-          {/* Dashboard */}
-          <Link
-            to="/dashboard"
-            className={`
-            px-1.5 sm:px-2 md:px-3 xl:px-4 py-1 sm:py-1.5
-            rounded-full
-            bg-gradient-to-br from-orange-300 to-orange-200
-            text-neutral-700 hover:text-neutral-900
-            transition-all duration-300
-            shadow-md
-            font-poppins
-          `}
-          >
-            Dashboard
-          </Link>
+              <Link to="/analytics">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-poppins font-bold px-2 sm:px-4 md:px-6 py-1 sm:py-2 rounded-full shadow-lg border-2 border-orange-600 text-[10px] sm:text-sm md:text-base whitespace-nowrap">
+                    Analytics
+                  </div>
+                </motion.div>
+              </Link>
+            </div>
+          </div>
         </div>
       </motion.nav>
     </motion.div>
   );
-}
-
-function reducer(state, action) {
-  switch (action) {
-    case "mouse_enter":
-      return { ...state, property1: "after" };
-    case "mouse_leave":
-      return { ...state, property1: "default" };
-    default:
-      return state;
-  }
 }
 
 export default Navbar;
